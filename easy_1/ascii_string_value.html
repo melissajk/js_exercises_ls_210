@@ -1,0 +1,15 @@
+<body>
+  <script>
+    function asciiValue(string) {
+      var total = 0;
+      var i;
+      
+      for (i = 0; i < string.length; i += 1) {
+        total += string[i].charCodeAt(0);
+      }
+      return total;
+    }
+    console.log(asciiValue(''));
+  </script>
+</body>
+

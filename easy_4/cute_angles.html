@@ -1,0 +1,26 @@
+<body>
+  <script>
+    var DEGREE = '\xB0';
+    
+    function padZero(number) {
+      stringNumber = String(number);
+      return stringNumber.length < 2 ? '0' + stringNumber : stringNumber;
+    }
+
+    function dms(degrees) {
+      var MINUTES_IN_A_DEGREE = 60;
+      var SECONDS_IN_A_MINUTE = 60;
+      var wholeDegrees = Math.floor(degrees);
+      var minutes = Math.floor((degrees - wholeDegrees) * MINUTES_IN_A_DEGREE);
+      var seconds = Math.floor((((degrees - wholeDegrees) * MINUTES_IN_A_DEGREE)
+                               - minutes) * SECONDS_IN_A_MINUTE);
+
+      return String(wholeDegrees) + DEGREE + padZero(minutes) + "'"
+                                  + padZero(seconds) + '"';
+    }
+    console.log(dms(254.6));
+    console.log(dms(93.034773));
+    console.log(dms(0));
+    console.log(dms(360));
+  </script>
+</body>

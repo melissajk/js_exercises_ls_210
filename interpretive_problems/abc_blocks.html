@@ -1,0 +1,46 @@
+<body>
+  <script>
+    // input: word string
+    // output: true or false depending on whether the string can be made with the blocks
+    // -- each block can only be used once
+    // -- letters are case sensitive
+    // -- automatic response for empty strings or non-alpha strings?
+    // -- response if it's an invalid data type?
+    //  13 blocks -- array of strings
+    // each char --> check for the correct block  block.includes(char.upcase())
+    //  true ? splice block from array  -- if they all come back false -- return false
+    
+    function isBlockWord(word) {
+      var blocks = ['BO', 'GT', 'VI', 'XK', 'RE', 'LY', 'DQ', 'FS', 'ZM', 'CP', 'JW', 'NA', 'HU'];
+      var char;
+      var blockAvail;
+      var i;
+      var j;
+      
+      for (i = 0; i < word.length; i += 1) {
+        char = word[i].toUpperCase();
+        blockAvail = false;
+        for (j = 0; j < blocks.length; j += 1) {
+          if (blocks[j].includes(char)) {
+            blocks.splice(j, 1);
+            blockAvail = true;
+          }
+        } if (blockAvail === false) {
+          return false;
+        }
+      }
+      return true;
+    } 
+    
+    console.log(isBlockWord('BATCH'));      // true
+    console.log(isBlockWord('BUTCH'));      // false
+    console.log(isBlockWord('jest'));       // true
+    console.log(isBlockWord('BOX'));         // false
+    //console.log(isBlockWord('1234'));        // false
+    //console.log(isBlockWord(''));            // false
+    //console.log(isBlockWord('wax'));         // true
+    //console.log(isBlockWord('as to'));       // true or false?
+    
+  </script>
+</body>
+

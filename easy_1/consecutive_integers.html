@@ -1,0 +1,38 @@
+<body>
+  <script>
+    var int;
+    var operation;
+    var total = 1;
+    var i;
+    
+    do {
+      int = parseInt(prompt('Please enter an integer greater than 0:'), 10);
+      } while (String(int) === "NaN");
+  
+    while (true) {
+      operation = prompt('Enter "s" to compute the sum, or "p" to compute the product:');
+      if (operation === 's' || operation === 'p') {
+        break;
+      } else {
+        alert('Oops! That is an invalid operation')
+      }
+    }
+  
+    if (operation === 's') {
+      operation = 'sum';
+      for (i = 2; i <= int; i += 1) {
+        total += i;
+      }
+    }
+    
+    if (operation === 'p') {
+      operation = 'product';
+      for (i = 2; i <= int; i += 1) {
+        total *= i;
+      }
+    }
+    
+    console.log('The ' + operation + ' of the integers between 1 and ' + String(int) + ' is ' + String(total) + '.')
+    console.log(`The ${operation} of the integers between 1 and ${String(int)} is ${String(total)}.`)
+  </script>
+<body>

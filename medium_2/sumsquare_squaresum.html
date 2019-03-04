@@ -1,0 +1,41 @@
+<body>
+  <script>
+    // input: n (positive? integer?)
+    // output: sum(1..n)**2 - sum(1**2, 2**2,..n**2)
+    // 2 --> sum(1..2)**2 - sum(1**2, 2**2) --> 4
+    
+    // range function --> returns array 1..n
+    // sum square = reduce range array result ** 2
+    // square sum = rangeArray.map(square).reduce()
+    // return sumSquare - squaresum
+    
+    function firstIntegers(number) {
+      var result = [];
+      var i;
+      
+      for (i = 1; i <= number; i += 1) {
+        result.push(i);
+      }
+      return result;
+    }
+    
+    function sumSquareDifference(number) {
+      var sumSquare = 0;
+      var squareSum = 0;
+      
+      firstIntegers(number).forEach(function (num) {
+        sumSquare += num;
+        squareSum += num**2;
+      });
+      
+      return sumSquare**2 - squareSum;
+    }
+    
+    console.log(sumSquareDifference(2));      // 4
+    console.log(sumSquareDifference(3));      // 22 --> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+    console.log(sumSquareDifference(10));     // 2640
+    console.log(sumSquareDifference(1));      // 0
+    console.log(sumSquareDifference(100));    // 25164150
+  </script>
+</body>
+

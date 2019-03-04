@@ -1,0 +1,28 @@
+<body>
+  <script>
+    function shortLongShort(string1, string2) {
+      var newString;
+      
+      if (string1.length > string2.length) {
+        newString = string2 + string1 + string2;
+      } else {
+        newString = string1 + string2 + string1;
+      }
+      
+      return newString
+    }
+    console.log(shortLongShort('', 'xyz'));
+  </script>
+</body>
+
+<!-- LS solution 
+function shortLongShort(string1, string2) {
+  if (string1.length > string2.length) {
+    return string2 + string1 + string2;
+  } else {
+    return string1 + string2 + string1;
+  }
+}
+This solution takes advantage of the fact that JavaScript automatically coerces string primitives to String objects when needed.
+-->
+

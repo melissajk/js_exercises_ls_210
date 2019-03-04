@@ -1,0 +1,62 @@
+<body>
+  <script>
+    // input: number
+    // output: next featured number
+    //   a featured number:
+    //   -- multiple of 7   (number % 7 === 0)
+    //   -- the digits do not repeat (String(number).split('').uniq() == String(number).split(''))
+    //   -- the number is odd (number % 2 !== 0)
+    //   Throw an error if there is no next featured number 
+    //    -- highest non-repeating number is 9876543210
+    //
+    // number -- find the next multiple of seven 
+    // add seven until you reach the next highest featured number number.uniq and
+    // number is also odd
+    
+    function nextOddMultOfSeven(number) {
+      while (true) {
+        number += 1;
+        if (number % 7 === 0 && number % 2 !== 0) {
+          break
+        }
+      }
+      return number;
+    }
+
+    function uniqueDigits(number) {
+      var digits = String(number)
+      
+      return digits.split('').every(function (digit) {
+        return digits.indexOf(digit) === digits.lastIndexOf(digit);
+      });
+
+    }
+    
+    function featured(number) {
+      var MAX_FEATURED = 9876543201
+      var candidate;
+      
+      candidate = nextOddMultOfSeven(number);
+      
+      do {
+        if (uniqueDigits(candidate)) {
+          return candidate;
+        }
+        candidate += 14;
+      } while (candidate < MAX_FEATURED);
+      return 'There is no possible number that fulfills those requirements.';
+    }
+    
+    console.log(featured(1));            // 7
+    console.log(featured(12));           // 21
+    console.log(featured(20));           // 21
+    console.log(featured(21));           // 35
+    console.log(featured(997));          // 1029
+    console.log(featured(1029));         // 1043
+    console.log(featured(999999));       // 1023547
+    console.log(featured(999999987));    // 1023456987
+    console.log(featured(9876543210));    // 'No next featured number'
+    
+  </script>
+</body>
+

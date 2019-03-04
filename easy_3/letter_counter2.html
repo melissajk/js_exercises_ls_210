@@ -1,0 +1,32 @@
+<body>
+  <script>
+    function wordSizes(words) {
+      var wordsArray = words.split(' ');
+      var count = {};
+      var plainWord;
+      var wordSize;
+      var i;
+
+      for (i = 0; i < wordsArray.length; i += 1) {
+        plainWord = wordsArray[i].replace(/[^a-z]/gi, '');
+        wordSize = plainWord.length;
+        if (wordSize === 0) {
+          continue;
+        }
+
+        count[wordSize] = count[wordSize] || 0;
+        count[wordSize] += 1;
+      }
+
+      return count;
+    }
+    console.log(wordSizes('Four score and seven.'))
+    
+  </script>
+</body>
+
+
+
+
+
+

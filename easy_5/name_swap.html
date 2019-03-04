@@ -1,0 +1,17 @@
+<body>
+  <script>
+    function swapName(name) {
+      var nameArray = name.split(' ');
+      var lastName;
+      
+      if (nameArray.length > 2) {
+        lastName = nameArray.pop();
+        return lastName + ', ' + nameArray.join(' ')
+      }
+      else {
+        return nameArray.reverse().join(', ');
+      }
+    }
+    console.log(swapName('Joe Blow Roberts'));
+  </script>
+</body>

@@ -1,0 +1,11 @@
+<body>
+  <script>
+    function sum(integer) {
+      return String(integer).split('').reduce( function(sum, char) {
+        return sum + Number(char);
+      }, 0);
+    }
+    console.log(sum(23));
+    console.log(sum(496));
+  </script>
+</body>

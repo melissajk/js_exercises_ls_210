@@ -1,0 +1,16 @@
+<body>
+  <script>
+    var ladder = '';   // The semicolon needs to finish the line!
+
+    ['head', 'heal', 'teal', 'tell', 'tall', 'tail'].forEach(function(word) {
+      if (ladder !== '') {
+        ladder += '-';
+      }
+
+      ladder += word
+    });
+
+    console.log(ladder)  // expect: head-heal-teal-tell-tall-tail
+  </script>
+</body>
+

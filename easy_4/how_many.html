@@ -1,0 +1,24 @@
+<body>
+  <script>
+    function countOccurrences(vehicles){
+      var count = {};
+      
+      vehicles.forEach (function(vehicle) {
+        count[vehicle] = count[vehicle] || 0;
+        count[vehicle] += 1;
+      });
+      logOccurrences(count);
+    }
+    
+    function logOccurrences(occurrences) {
+      var item;
+      for (item in occurrences) {
+        console.log(item + ' => ' + String(occurrences[item]));
+      }
+    }
+    var vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck',
+                'motorcycle', 'motorcycle', 'car', 'truck'];
+    
+   countOccurrences(vehicles);
+  </script>
+</body>

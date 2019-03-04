@@ -1,0 +1,59 @@
+<body>
+  <script>
+    // input: plaintext & keyword
+    // output: encrypted text 
+    //  -- each char in keyword serves as a key 'a..z'.indexOf(char)
+    // -- the key is the shifting value for the character
+    // -- You rotate through the key for each alpha character
+    // --- non alphas remain unencrypted and the key isn't moved forward for these characters
+    // -- The case of the keyword doesn't matter 'GiRl' == 'girl'
+    // -- The case of the original character DOES matter 'Girl' --> 'Risv'
+    // -- the keyword can be longer or shorter -- If it's longer -- use what you need
+    
+    
+    // find out the number pattern on the keyword!
+    // iterate through all the chars 
+    //  -- if it's an alpha character ---> encrypt(char, numberPattern, count)
+    // ------ add character to string  count += 1
+    // -- else return character
+    var ALPHA = 'abcdefghijklmnopqrstuvwxyz';
+
+    function shiftPattern(keyword) {
+      return keyword.split('').map(function (char) {
+        return ALPHA.indexOf(char.toLowerCase())
+      });
+    }
+    
+    function encrypt(char, shiftPattern, count) {
+      var UPPERCASE = ALPHA.toUpperCase();
+      var LOWERCASE = ALPHA;
+      var shift = shiftPattern[count % shiftPattern.length];
+      
+      var newIndex = (UPPERCASE.indexOf(char.toUpperCase()) + shift) % UPPERCASE.length;
+      return UPPERCASE.indexOf(char) > -1 ? UPPERCASE[newIndex] : LOWERCASE[newIndex];
+    }
+    
+    function vigenereCipher(text, keyword) {
+      var encrypted = '';
+      var shiftArray = shiftPattern(keyword);
+      var count = 0;
+      
+      text.split('').forEach(function (char) {
+        if (/[a-z]/i.test(char)) {
+          encrypted += encrypt(char, shiftArray, count);
+          count += 1;
+        } else {
+          encrypted += char;
+        }
+      });
+      return encrypted;
+    }
+    
+    console.log(vigenereCipher("Pineapples don't go on pizzas!", 'meat'));
+    // Bmnxmtpeqw dhz'x gh ar pbldal!
+    console.log(vigenereCipher('Hello', 'Hi'));  // 'Hi' = [7, 8] Omstv
+    console.log(vigenereCipher('Dog', 'Rabbit')); // Uoh
+    
+  </script>
+</body>
+

@@ -1,0 +1,19 @@
+<body>
+  <script>
+    function triangle(size) {
+      var STAR = '*';
+      var SPACE = ' ';
+      var triangle = '';
+      var line = '';
+      var i;
+      
+      for (i = 1; i <= size; i += 1) {
+        line = SPACE.repeat(size - i) + STAR.repeat(i) + '\n';
+        triangle += line;
+      }
+      return triangle;
+    }
+    console.log(triangle(9));
+  </script>
+</body>
+

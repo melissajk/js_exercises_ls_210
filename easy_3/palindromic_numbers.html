@@ -1,0 +1,21 @@
+<body>
+  <script>
+    function isPalindrome(string) {
+      return string === string.split('').reverse().join('');
+    }
+    
+    function isPalindromicNumber(number) {
+      return isPalindrome(String(number));
+    }
+    console.log(isPalindromicNumber(34543));
+    console.log(isPalindromicNumber(123210));
+    console.log(isPalindromicNumber(22));
+    console.log(isPalindromicNumber(5));
+  </script>
+</body>
+
+
+
+
+
+

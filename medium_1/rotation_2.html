@@ -1,0 +1,53 @@
+<body>
+  <script>
+    // input: array of num, strings, objects
+    // output: array with first item rotated to the last item
+    // -- original array has to remain intact 
+    // -- return undefined if the argument Array.isArray(argument) === false
+    // -- return empty array if the array.length === 0;
+    
+    function rotateArray(array) {
+      if (!Array.isArray(array)) {
+        return undefined;
+      }
+      
+      if (array.length === 0) {
+        return array;
+      }
+      return array.slice(1).concat(array[0]);
+    }
+    
+    // input: number for rotation and n = digits to be rotated
+    // output: rotated number
+    
+    // 1st number has to be an integer and include n digits 
+    // Assume this is always provided?
+    // Will it always be a number?
+    
+    // 12345, 3. ---> 12453
+    
+    // number --> string --> array
+    // splice off n digits from the end splice(-n, n)
+    // rotate array on the spliced array
+    // concat original array and rotated array
+    // join('') 
+    // string ---> number
+    
+    function rotateRightmostDigits(number, digits) {
+      var firstPart = String(number).split('');
+      var secondPart = firstPart.splice(-digits, digits);
+      var resultString = firstPart.concat(rotateArray(secondPart)).join('');
+  
+      return Number(resultString);
+    }
+    
+    console.log(rotateRightmostDigits(735291, 1));      // 735291
+    console.log(rotateRightmostDigits(735291, 2));      // 735219
+    console.log(rotateRightmostDigits(735291, 3));      // 735912
+    console.log(rotateRightmostDigits(735291, 4));      // 732915
+    console.log(rotateRightmostDigits(735291, 5));      // 752913
+    console.log(rotateRightmostDigits(735291, 6));      // 352917
+    
+  </script>
+</body>
+

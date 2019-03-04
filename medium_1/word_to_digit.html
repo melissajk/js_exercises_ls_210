@@ -1,0 +1,32 @@
+<body>
+  <script>
+    function wordToDigit(string) {
+      var numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+      var regex;
+
+      numbers.forEach(function (word, index) {
+        regex = new RegExp('\\b' + word + '\\b', 'gi');
+        string = string.replace(regex, String(index));
+      });
+      return string;
+    }
+    
+    function wordToDigit1(string) {
+      function convertWord(word) {
+        return numbers.indexOf(word.toLowerCase());
+      }
+      var numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+      var regex = new RegExp('\\b(' + numbers.join('|') + ')\\b', 'gi');
+
+      return string.replace(regex, convertWord)
+    }
+    
+    console.log(wordToDigit1('Five, Four, Three, Two, ONE... BLASTOFF'));
+    
+    console.log(wordToDigit1('Please call me at five five five one two three four. Thanks.'));
+    console.log(wordToDigit('Five, Four, Three, Two, ONE... BLASTOFF'));
+    console.log(wordToDigit1('fourth estate fiver done freight'))
+    
+  </script>
+</body>
+

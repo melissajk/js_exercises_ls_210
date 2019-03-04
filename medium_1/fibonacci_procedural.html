@@ -1,0 +1,51 @@
+<body>
+  <script>
+    // three numbers in the array [n-2, n-1, n]
+    // fibArray = [1, 1]
+    // counter = 2
+    // fibArray.push(fibArray[0] + fibArray[1]);
+    // fibarray.shift()
+    // counter += 1
+    
+    function fibonacci(nth) {
+      var fibArray = [1, 1];
+      var i;
+      
+      if (nth <= 2) {
+        return 1;
+      }
+      
+      for (i = 2; i < nth; i += 1) {
+        fibArray.push(fibArray[0] + fibArray[1]);
+        fibArray.shift()
+      }
+      return fibArray[1];
+    }
+    
+    console.log(fibonacci(1));       // 1
+    console.log(fibonacci(2));       // 1
+    console.log(fibonacci(3));       // 2
+    console.log(fibonacci(4));       // 3
+    console.log(fibonacci(5));       // 5
+    console.log(fibonacci(6));       // 8
+    console.log(fibonacci(12));      // 144
+    console.log(fibonacci(20));      // 6765
+
+    console.log(fibonacci(50));       // 12586269025
+    console.log(fibonacci(100));      // 354224848179261915075
+    
+    //LS Solution
+    
+    function fibonacci(nth) {
+      var previousTwo = [1, 1];
+      var i;
+
+      for (i = 3; i <= nth; i += 1) {
+        previousTwo = [previousTwo[1], previousTwo[0] + previousTwo[1]];
+      }
+
+      return previousTwo[1];
+    }
+  </script>
+</body>
+

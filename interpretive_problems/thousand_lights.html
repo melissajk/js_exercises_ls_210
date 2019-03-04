@@ -1,0 +1,51 @@
+<body>
+  <script>
+    // input: number of lights and rounds of toggling
+    // output: which # lights are on at the end
+    // create an object to hold the lights and currentposition
+    // start with all positions at 'off'
+    // first round turns all lights on, 2nd round - multiples of 2, 3rd round multiples of three
+    // build a function to create the data structure to hold the multiples
+    //  -- first multiples result will be the data structure used to loop through the other multiples
+    // multiples(1, 5) --> [1, 2, 3, 4, 5]  (5 is limit, 1 is multiple (also the begining))
+    // multiples(2, 5) --> [2, 4]
+    // build a toggling function 
+    // [1, 2, 3, 4, 5] --> multiples(n, 5) --> toggle
+    // also create object with first result of multiples
+    
+    function multiples(multiple, limit) {
+      var result = [];
+      var i;
+      
+      for (i = multiple; i <= limit; i += multiple) {
+        result.push(i);
+      }
+      return result;
+    }
+    
+    function lightsOn(lights) {
+      var lightStatus = {}
+      var allLights = multiples(1, lights);
+
+      function toggle(light) {
+        return lightStatus[light] = lightStatus[light] === 'off' ? 'on' : 'off';
+      }
+      
+      allLights.forEach(function (light) {
+        lightStatus[light] = 'off';
+      });
+      
+      allLights.forEach(function (multiple) {
+        multiples(multiple, lights).forEach(toggle);
+      });
+
+      return Object.keys(lightStatus).filter(function (light) {
+        return lightStatus[light] === 'on';
+      }).map(Number);
+    }
+    
+    console.log(lightsOn(5));
+    console.log(lightsOn(100));
+  </script>
+</body>
+

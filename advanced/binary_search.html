@@ -1,0 +1,64 @@
+<body>
+  <script>
+    // input: list, value to find in the list
+    // -- value can be either number or string
+    // output: index of the item or -1
+    // -- assumes the list is sorted
+    // 
+    // make a shallow copy of the list
+    // find the middle value of the remaining list
+    // if the middle value = the given value, return the index of the middle value
+    // if the value is greater than the given value, splice the first half of the list
+    // if the value is less than the given value, splice the latter half of the list
+    // repeat until the value is found, or until the list is empty
+    //
+    function binarySearch(list, value) {
+      let index = -1;
+      let midpoint = Math.floor(list.length / 2);
+
+      while (true) {
+        if (value === list[midpoint]) {
+          index = midpoint;
+          break;
+        } else if (neitherHereNorThere(value, list, midpoint)){
+          return index;
+        } else if (value > list[midpoint]) {
+          midpoint += Math.ceil(list.slice(midpoint + 1).length / 2);
+        } else if (value < list[midpoint]) {
+          midpoint -= Math.ceil(list.slice(0, midpoint).length / 2);
+        }
+      }
+      return index;
+    }
+
+    function neitherHereNorThere(value, list, midpoint) {
+      return (value > list[midpoint] && value < list[midpoint + 1]) ||
+      (value < list[midpoint] && value > list[midpoint - 1])
+    }
+
+
+   var yellowPages = ['Apple Store', 'Bags Galore', 'Bike Store', 'Donuts R Us', 'Eat a Lot', 'Good Food', 'Pasta Place', 'Pizzeria', 'Ruby Lounge', 'Zooper'];
+    //
+    console.log(binarySearch(yellowPages, 'Pizzeria'));
+    console.log(binarySearch(yellowPages, 'Apple Store'));
+    
+    console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 77));
+    console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 89));
+    console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 6));
+    console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 5));
+    
+    console.log(binarySearch(['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler'], 'Peter'));
+    console.log(binarySearch(['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler'], 'Tyler'));
+    
+    // I manipulated the midpoint of the array.  LS reset the start and end point on the array, without splicing it, and calculated midpoint based on the difference between the indexes of start and end. 
+    
+    
+  </script>
+</body>
+
+
+
+
+
+
+

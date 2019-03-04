@@ -1,0 +1,84 @@
+<!--<body>
+  <script>
+    function logInBox(text) {
+      var DASH = '-';
+      var SPACE = ' ';
+
+      var border = '+-' + DASH.repeat(text.length) + '-+' + '\n';
+      var spacer = '| ' + SPACE.repeat(text.length) + ' |' + '\n';
+      var textLine = '| ' + text + ' |' + '\n';
+      
+      var banner = border + spacer + textLine + spacer + border;
+      
+      console.log(banner);
+    }
+    logInBox('To boldly go where no one has gone before.')
+  </script>
+</body>-->
+
+<!--<body>
+  <script>
+    function logInBox(text, boxWidth) {
+      var SIDE_SPACE = 4;
+      var DASH = '-';
+      var SPACE = ' ';
+      var truncText;
+      
+      if (boxWidth && boxWidth < text.length) { 
+        boxWidth -= SIDE_SPACE;
+        truncText = text.substr(0, boxWidth);
+      } else if (boxWidth > text.length) {
+        boxWidth = undefined;
+      }
+
+      var border = '+-' + DASH.repeat(boxWidth || text.length) + '-+' + '\n';
+      var spacer = '| ' + SPACE.repeat(boxWidth || text.length) + ' |' + '\n';
+      var textLine = '| ' + (truncText || text) + ' |' + '\n';
+      
+      var banner = border + spacer + textLine + spacer + border;
+      
+      console.log(banner);
+    }
+    logInBox('To boldly go where no one has gone before.', 55)
+  </script>
+</body>-->
+
+<body>
+  <script>
+    function generateTextLines(text, width) {
+      var i = 0;
+      var textLines = '';
+      var textAndSpaces = text + ' '.repeat(width - (text.length % width));
+      
+      while (i < text.length) {
+        textLines += '| ' + textAndSpaces.substr(i, width) + ' |' + '\n';
+        i += width;
+      }
+      return textLines;
+    }
+
+    function logInBox(text, innerBoxWidth) {
+      var DASH = '-';
+      var SPACE = ' ';
+      var border;
+      var spacer;
+      var textLine;
+      var banner;
+      
+      if (innerBoxWidth && innerBoxWidth < text.length) { 
+        textLine = generateTextLines(text, innerBoxWidth);
+      } else {
+        textLine = '| ' + text + ' |' + '\n';
+      }
+
+      border = '+-' + DASH.repeat(innerBoxWidth || text.length) + '-+' + '\n';
+      spacer = '| ' + SPACE.repeat(innerBoxWidth || text.length) + ' |' + '\n';
+      
+
+      banner = border + spacer + textLine + spacer + border;
+      
+      console.log(banner);
+    }
+    logInBox('To boldly go where no one has gone before.', 5);
+  </script>
+</body>

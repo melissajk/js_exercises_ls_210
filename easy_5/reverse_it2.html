@@ -1,0 +1,21 @@
+<body>
+  <script>
+    function reverseWords(text) {
+      var wordsArray = text.split(' ');
+      var i;
+      
+      for (i = 0; i < wordsArray.length; i += 1) {
+        if (wordsArray[i].length >= 5) {
+          wordsArray[i] = wordsArray[i].split('').reverse().join('');
+        }
+      }
+      return wordsArray.join(' ');
+    }
+    var text = 'Walk around the block'
+    console.log(reverseWords('Professional'));
+    console.log(reverseWords(text));
+    console.log(reverseWords('Launch School'));
+    console.log(text);
+    
+  </script>
+</body>

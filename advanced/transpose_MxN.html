@@ -1,0 +1,32 @@
+<body>
+  <script>
+    function getRow(matrix, idx) {
+      var result = [];
+      var i;
+      
+      for (i = 0; i < matrix.length; i += 1) {
+        result.push(matrix[i][idx]);
+      }
+      return result;
+    }
+    
+    function transpose(matrix) {
+      var result = [];
+      var colIdx;
+      
+      for (colIdx = 0; i < matrix[0].length; i += 1) {
+        result.push(getRow(matrix, colIdx));
+      }
+      return result;
+    }
+    
+    console.log(transpose([[1, 2, 3, 4]]));
+    console.log(transpose([[1], [2], [3], [4]]));
+    console.log(transpose([[1]]));
+    console.log(transpose([[1, 2, 3, 4, 5], [4, 3, 2, 1, 0], [3, 7, 8, 6, 2]]));
+    
+  </script>
+</body>
+
+
+

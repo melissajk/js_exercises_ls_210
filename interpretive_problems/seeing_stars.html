@@ -1,0 +1,100 @@
+<body>
+  <script>
+    // input: odd integer >= 7
+    // output: 8 pointed star made of smaller stars
+    //  -- n x n grid
+    // -- All lines (except the center) have 3 asterisks -- center has n asterisks (both x & y axis)
+    // -- There is an asterisk at all four corners of the n x n grid
+    // -- The length of the starbursts grows by 1 row from one odd integer to the other
+    // -- starburst length = (n - 1) / 2
+    // -- space (0) ast space((n - 3) / 2) ast space((n - 3) / 2) ast space(0) 
+    // -- space (+1) ast space(-1) ast space (-1) ast space(+1)
+    // -- var outerSpace = 0;    var innerSpace = (n - 3) / 2
+    // var increment = 1
+    // -- each row up to center line outerSpace += increment;    innerSpace += -increment;
+    // -- center line = '*'.repeat(n);
+    // center line @ Math.floor(n / 2) (index)  change increment to -1
+    // console.log(' '.repeat(OuterSpace) + '*' + ' '.repeat(innerSpace) + '*' + ' '.repeat(innerSpace) + '*' + ' '.repeat(outerSpace));
+    // if i === Math.floor(n / 2) -- then console.log('*'.repeat(n))  increment = -1
+    function star(n) {
+      var outerSpaceLength = 0
+      var innerSpaceLength = (n - 3) / 2;
+      var outerSpace;
+      var innerSpace;
+      var centerIndex = Math.floor(n / 2);
+      var i;
+      
+      for (i = 0; i < centerIndex; i += 1) {
+        outerSpace = ' '.repeat(outerSpaceLength + i);
+        innerSpace = ' '.repeat(innerSpaceLength - i);
+        console.log([outerSpace, '*', innerSpace, '*', innerSpace, '*', outerSpace].join(''));
+      }
+        console.log('*'.repeat(n));
+        
+        outerSpaceLength = (n - 3) / 2;
+        innerSpaceLength = 0
+        
+      for (i = 0; i < centerIndex; i += 1) {
+        outerSpace = ' '.repeat(outerSpaceLength - i);
+        innerSpace = ' '.repeat(innerSpaceLength + i);
+        console.log([outerSpace, '*', innerSpace, '*', innerSpace, '*', outerSpace].join(''));
+      }
+    }
+      
+      //star(7);
+      
+  // [0, 1, 2] [2, 1, 0]  [[0, 2] [1, 1], [2, 0]]  --> top   bottom = top.reverse
+  // range, revRange ranges[0], ranges[1], ranges[2]
+      function starsAndSpaces(n) {
+        var rows = range(Math.floor(n / 2));
+        var reverseRows = rows.slice().reverse();
+        
+        return rows.map(function (row, index) {
+          return [rows[index], '*', reverseRows[index], '*', reverseRows[index], '*'];
+        });
+      }
+      
+      function range(n) {
+        var result = [];
+        var i;
+        
+        for (i = 0; i < n; i += 1) {
+          result.push(i);
+        }
+        return result;
+      }
+      
+      function halfStar(n) {
+        return starsAndSpaces(n).map(function (row) {
+          return row.map(function (element, index) {
+            if (index % 2 === 0) {
+              return ' '.repeat(element);
+            } else {
+              return element;
+            }
+          }).join('');
+        });
+      }
+      
+      function star1(n) {
+        var starTop = halfStar(n);
+        var starBottom = halfStar(n).slice().reverse();
+        var centerLine = '*'.repeat(n)
+        
+        starTop.forEach(function (row) {
+          console.log(row);
+        });
+        
+        console.log(centerLine);
+        
+        starBottom.forEach(function (row) {
+          console.log(row);
+        });
+
+      }
+      
+      star1(9);
+      
+  </script>
+</body>
+

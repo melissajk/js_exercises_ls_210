@@ -1,0 +1,13 @@
+<body>
+  <script>
+    function digitList(number) {
+      return String(number).split('').map(function(value) {
+        return Number(value);
+      });
+    }
+    console.log(digitList(12345));
+    console.log(digitList(7));
+    console.log(digitList(375290));
+    console.log(digitList(444));
+  </script>
+</body>

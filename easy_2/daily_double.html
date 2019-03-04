@@ -1,0 +1,30 @@
+<body>
+  <script>
+    function crunch(string) {
+      var newString = '';
+      var lastChar = ''
+      var i;
+      
+      for (i = 0; i < string.length; i += 1) {
+        if (string[i] !== lastChar) {
+          newString += string[i];
+        }
+        lastChar = string[i];
+      }
+      return newString;
+    }
+    console.log(crunch('ddaaiillyy ddoouubbllee'));
+  </script>
+</body>
+
+<body>
+  <script>
+    function crunch(text) {
+      var regex = /([a-z0-9])\1+/gi;
+      return text.replace(regex, '$1');
+    }
+    console.log(crunch('ddaaiillyy ddoouubbllee'));
+  </script>
+</body>
+
+

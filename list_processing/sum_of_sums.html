@@ -1,0 +1,30 @@
+<body>
+  <script>
+    function sumOfSums(array) {
+      var runningTotal = 0;
+
+      return array.map(function (num) {
+        return runningTotal += num;
+      }).reduce(function (sum, number) {
+        return sum + number;
+      });
+    }
+    
+    console.log(sumOfSums([3, 5, 2]));
+    console.log(sumOfSums([1, 5, 7, 3]));
+    console.log(sumOfSums([4]));
+    console.log(sumOfSums([1, 2, 3, 4, 5]));
+    
+    //LS solution maps every number to a slice of the array -- no side effects
+    
+    function sumOfSums(numbers) {
+      return numbers.map(function (number, idx) {
+        return numbers.slice(0, idx + 1).reduce(function (sum, value) {
+          return sum + value;
+        });
+      }).reduce(function (sum, value) {
+        return sum + value;
+      });
+    }
+  </script>
+</body>

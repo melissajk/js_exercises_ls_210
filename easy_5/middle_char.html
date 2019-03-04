@@ -1,0 +1,10 @@
+<body>
+  <script>
+    function centerOf(text) {
+      var midIdx = Math.floor(text.length / 2);
+      return text.length % 2 === 0 ? text[midIdx - 1] + text[midIdx] : text[midIdx]
+    }
+    console.log(centerOf('I love Ruby'));
+    console.log(centerOf('Launch'));
+  </script>
+</body>

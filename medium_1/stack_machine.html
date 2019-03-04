@@ -1,0 +1,128 @@
+<body>
+  <script>
+    // stack = array of numbers that work with the different commands and the register
+    // (just a number -- n) puts a number in the register without modifying the stack
+    // push --> pushes numbers onto the stack
+    // add, sub, mult, div, mod ---> pop a number from the stack, math operation with register
+    // pop --> take a number from the stack and put it in the register
+    // print -- print the register
+    // stack --> []
+    // register --> 0
+    
+    // input: a string of tokens
+    // output: an integer (or integers)
+    
+    // integers can be negative
+    // tokens are always valid!
+    // What does an empty string yield?
+    
+    // split the string into numbers and tokens
+    // var register = 0
+    // var stack = []
+    // switch statement 
+    // TOKEN === 
+    // POP  register = stack.pop 
+    // PUSH stack += [register]
+    // MULT register = register * stack.pop
+    // DIV register = Math.round(register / stack.pop)
+    // MOD register = register % stack.pop
+    // SUB register += stack.pop
+    // ADD  register -= stack.pop
+    // PRINT console.log(register)
+    // else n --> register
+    
+    var tokenToFunction = {
+      'POP': function () { register = stack.pop() },
+      'PUSH': function () { stack.push(register) },
+      'MULT': function () { register = register * stack.pop() },
+      'DIV': function () { register = Math.round(register / stack.pop()) },
+      'MOD': function () { register = register % stack.pop() },
+      'SUB': function () { register -= stack.pop() },
+      'ADD': function () { register += stack.pop() },
+      'PRINT': function () {console.log(register)},
+    }
+    
+    function minilang(command) {
+      var tokenArray = command.split(' ');
+      var register = 0;
+      var stack = [];
+      
+      tokenArray.forEach(function (token) {
+        switch (token) {
+          case 'POP': return register = stack.pop();
+          case 'PUSH': return stack.push(register);
+          case 'MULT': return register = register * stack.pop();
+          case 'DIV': return register = Math.round(register / stack.pop());
+          case 'MOD': return register = register % stack.pop();
+          case 'SUB': return register -= stack.pop();
+          case 'ADD': return register += stack.pop();
+          case 'PRINT': console.log(register);
+                        break
+          default: register = Number(token);
+        }
+      });
+    }
+    
+    function minilang1(command) {
+      var tokenArray = command.split(' ');
+      var register = 0;
+      var stack = [];
+      
+      var tokenToFunction = {
+        'POP': function () { register = stack.pop() },
+        'PUSH': function () { stack.push(register) },
+        'MULT': function () { register *= stack.pop() },
+        'DIV': function () { register = Math.floor(register / stack.pop()) },
+        'MOD': function () { register = Math.floor(register % stack.pop()) },
+        'SUB': function () { register -= stack.pop() },
+        'ADD': function () { register += stack.pop() },
+        'PRINT': function () {console.log(register)},
+      }
+      
+      tokenArray.forEach(function (token) {
+        if (tokenToFunction[token]) {
+          return tokenToFunction[token]()
+        } else {
+          register = Number(token);
+        }
+      });
+    }
+    
+    minilang('PRINT');
+    // 0
+
+    minilang1('5 PUSH 3 MULT PRINT');
+    // 15
+
+    minilang1('5 PRINT PUSH 3 PRINT ADD PRINT');
+    // 5
+    // 3
+    // 8
+
+    minilang1('5 PUSH POP PRINT');
+    // 5
+
+    minilang1('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT');
+    // 5
+    // 10
+    // 4
+    // 7
+
+    minilang1('3 PUSH PUSH 7 DIV MULT PRINT');
+    // 6
+
+    minilang('4 PUSH PUSH 7 MOD MULT PRINT');
+    // 12
+
+    minilang('-3 PUSH 5 SUB PRINT');
+    // 8
+
+    minilang('6 PUSH');
+    
+    minilang('3 PUSH 3 PUSH 2 PUSH 4 MULT ADD PRINT');
+    // 11
+    
+    
+  </script>
+</body>
+

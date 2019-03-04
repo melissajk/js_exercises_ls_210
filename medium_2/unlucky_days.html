@@ -1,0 +1,42 @@
+<body>
+  <script>
+    // input: number representing a year
+    // -- year > 1752
+    // output: count of Friday the 13ths in that year
+    
+    // fridayCount = 0
+    // create an array with all 13ths for the year
+    // 
+    // check the 13ths in each month and see if they're fridays
+    // if Date.getDay(date) === 5 count += 1
+    // months / days are indexed starting at 0 
+    // Friday = 5 
+    // var months = [0..11]
+    // months.forEach(function (monthIndex) { 
+    //    if newDate(year, monthIndex, 13).getDay() === 5) {
+    //    count += 1
+    //
+      function fridayThe13ths(year) {
+        var months = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        var fridayCount = 0;
+        var friday = 5;
+        
+        months.forEach(function (monthIndex) {
+          if (new Date(year, monthIndex, 13).getDay() === friday) {
+            fridayCount += 1;
+          }
+        });
+        return fridayCount;
+      }
+    
+    
+    console.log(fridayThe13ths(1986));      // 1
+    console.log(fridayThe13ths(2015));      // 3
+    console.log(fridayThe13ths(2017));      // 2
+    console.log(fridayThe13ths(2018));
+    console.log(fridayThe13ths(2019));
+    
+    
+  </script>
+</body>
+

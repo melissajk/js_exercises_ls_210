@@ -1,0 +1,35 @@
+<body>
+  <script>
+    var ORDINALS = ['1st', '2nd', '3rd', '4th', '5th', 'last'];
+    var numbers = [];
+    var number;
+    var lastNumber;
+    var i;
+    
+    for (i = 0; i < ORDINALS.length; i += 1) {
+      while (true) {
+        number = prompt('Enter the ' + ORDINALS[i] + ' number:');
+        if (Number.isInteger(Number(number))) {
+          break;
+        } else {
+          alert('Oops! That\'s not a number.');
+        }
+      }
+      numbers.push(Number(number));
+    }
+    
+    lastNumber = numbers.pop();
+
+    if (numbers.indexOf(lastNumber) === -1) {
+      console.log('The number ' + lastNumber + ' does not appear in [' + numbers + '].');
+    } else {
+      console.log('The number ' + lastNumber + ' appears in [' + numbers + '].');
+    }
+  </script>
+</body>
+
+
+
+
+
+

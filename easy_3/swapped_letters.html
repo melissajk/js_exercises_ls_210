@@ -1,0 +1,64 @@
+<body>
+  <script>
+    function swap(text) {
+      var swapped = [];
+      var words = text.split(' ')
+      var word;
+      var temp;
+      var i;
+      
+      for (i = 0; i < words.length; i += 1) {
+        word = words[i].split('');
+        temp = word[0];
+        word[0] = word[word.length - 1];
+        word[word.length - 1] = temp;
+        swapped.push(word.join(''));
+      }
+      return swapped.join(' ');
+    }
+    
+    // LS solution was more intriguing!
+    
+    function swap(words) {
+      var wordsArray = words.split(' ');
+      var i;
+
+      for (i = 0; i < wordsArray.length; i += 1) {
+        wordsArray[i] = swapFirstLastCharacters(wordsArray[i]);
+      }
+
+      return wordsArray.join(' ');
+    }
+
+    function swapFirstLastCharacters(word) {
+      if (word.length === 1) {
+        return word;
+      }
+
+      return word[word.length - 1] + word.slice(1, -1) + word[0];
+    }
+    
+    function swap1(words) {
+  
+      var wordsArray = words.split(' ').map (word => swapFirstLastCharacters(word));
+
+      return wordsArray.join(' ');
+    }
+
+    function swapFirstLastCharacters(word) {
+      if (word.length === 1) {
+        return word;
+      }
+
+      return word[word.length - 1] + word.slice(1, -1) + word[0];
+    }
+    console.log(swap1('abcde'));
+    
+  </script>
+</body>
+
+
+
+
+
+

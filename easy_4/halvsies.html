@@ -1,0 +1,11 @@
+<body>
+  <script>
+    function halvsies(array) {
+      var midpoint = Math.ceil(array.length / 2);
+      var firstHalf = array.slice(0, midpoint);
+      var secondHalf = array.slice(midpoint, array.length);
+      return [firstHalf, secondHalf]
+    }
+    console.log(halvsies([1, 5, 2, 4, 3]));
+  </script>
+</body>

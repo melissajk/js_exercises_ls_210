@@ -1,0 +1,45 @@
+<body>
+  <script>
+    function wordSizes(text) {
+      var wordsArray = text.split(' ');
+      var result = {};
+      var wordSize;
+      var i;
+      
+      if (text === '') {
+        return result;
+      }
+      
+      for (i = 0; i < wordsArray.length; i += 1) {
+        wordSize = wordsArray[i].length
+        if (result[wordSize]) {
+          result[wordSize] += 1;
+        } else {
+          result[wordSize] = 1;
+        }
+      }
+      return result;
+    }
+
+// LS Solution -- check out the fancy action with incrementing the word count!
+    
+    function wordSizes(words) {
+      var wordsArray = words.split(' ');
+      var count = {};
+      var wordSize;
+      var i;
+
+      for (i = 0; i < wordsArray.length; i += 1) {
+        wordSize = wordsArray[i].length;
+        if (wordSize === 0) {
+          continue;
+        }
+
+        count[wordSize] = count[wordSize] || 0;
+        count[wordSize] += 1;
+      }
+
+      return count;
+    }
+  </script>
+</body>

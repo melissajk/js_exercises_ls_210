@@ -1,0 +1,17 @@
+<body>
+  <script>
+    function repeater(text) {
+      var doubled = '';
+      
+      text.split('').forEach(function(char) {
+        if (char.match(/[b-z]/gi) && char.match(/[^aeiou]/gi)) {
+          doubled += char + char;
+        } else {
+          doubled += char;
+        }
+      });
+      return doubled;
+    }
+    console.log(repeater('Hello'));
+  </script>
+</body>

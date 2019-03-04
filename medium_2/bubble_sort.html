@@ -1,0 +1,48 @@
+<body>
+  <script>
+    // input: array (strings, numbers, arrays?)
+    // output: array sorted in place 
+    // -- sort alpha like dictionary?
+    // -- arrays? other primitives
+    // [5, 3, 2, 1]. 
+    //. 1) 5 < 3 ? stick : swap;  [3, 5] -- swapped = true
+    //. 2) 5 < 2 ? return [2, 5] -- swapped = true
+    // get all the way through the array && swapped === false
+    // alpha element1[0] < element2[0] (all alpha downcase)
+    // use a placeholder variable for swapping
+    
+    function bubbleSort(array) {
+      var swapped;
+      var first;
+      var second;
+      var i;
+      
+      do {
+        swapped = false;
+        for (i = 0; i < array.length - 1; i += 1) {
+          first = array[i];
+          second = array[i + 1];
+          if (first > second) {
+            array[i] = second;
+            array[i + 1] = first;
+            swapped = true;
+          }
+        }
+      } while (swapped);
+    }
+    
+    var array = [5, 3];
+    bubbleSort(array);
+    console.log(array);    // [3, 5]
+
+    var array = [6, 2, 7, 1, 4];
+    bubbleSort(array);
+    console.log(array);    // [1, 2, 4, 6, 7]
+
+    var array = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+    bubbleSort(array);
+    console.log(array);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
+    
+  </script>
+</body>
+

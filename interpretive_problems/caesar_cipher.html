@@ -1,0 +1,53 @@
+<body>
+  <script>
+    // input: a string and a key value (pos integer)
+    // output: encrypted message
+    // key = positions shifted to the right (index + 3)
+    // encrypts both lower and uppercase (maintains case)  a --> b   A ---> B
+    // Any other character is left as is (including spaces and punctuation)
+    // if the shifting of the letters > 26 -- wraparound to the beginning
+    // empty strings?  = ''
+    // lowerCase = 'abcdefghijklmnopqrstuvwxyz'
+    // upperCase = 'ABCDEFGHIJKLMNOPQRSTUFWXYZ'
+    // /[a-z]/.test(char)  --> lowerCase  encode using upperCase
+    // /[A-Z]/.test(char)  --> UpperCase  encode using lowerCase
+    // Alpha? lowerCase.indexOf(char) OR upperCase.indexOf(char) 
+    // newIndex = charIndex + 5 % lowerCase.length 
+    // return upperCase[newIndex] or lowerCase[newIndex]
+    // if (Alpha) { encryptLetter(char, key)}
+    // else { return char }
+    
+    function encryptChar(char, key) {
+      var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var lowerCase = 'abcdefghijklmnopqrstuvwxyz';
+      
+      var charIndex = upperCase.indexOf(char.toUpperCase())
+      var newIndex = (charIndex + key) % upperCase.length;
+      
+      return upperCase.indexOf(char) > -1 ? upperCase[newIndex] : lowerCase[newIndex];
+    }
+    
+    function caesarEncrypt(string, key) {
+      var encrypted = '';
+      
+      string.split('').forEach(function (char) {
+        encrypted += /[a-z]/gi.test(char) ? encryptChar(char, key) : char
+      });
+
+      return encrypted;
+    }
+    
+    console.log(caesarEncrypt('A', 0));       // "A"
+    console.log(caesarEncrypt('A', 3));       // "D"
+    console.log(caesarEncrypt('y', 5));       // "d"
+    console.log(caesarEncrypt('a', 47));      // "v"
+    console.log(caesarEncrypt('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 25));
+    console.log(caesarEncrypt('The quick brown fox jumps over the lazy dog!', 5));
+    console.log(caesarEncrypt('There are, as you can see, many punctuations. Right?; Wrong?', 2));
+    console.log(caesarEncrypt('ABC 123', 3));   // "DEF 123"
+    console.log(caesarEncrypt('', 5));             // ''
+    
+    
+  </script>
+</body>
+

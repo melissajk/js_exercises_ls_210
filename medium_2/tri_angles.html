@@ -1,0 +1,66 @@
+<body>
+  <script>
+    // input: 3 angles
+    // -- all angles > 0
+    // -- angle1 + angle2 + angle3 == 180
+    // -- args in degrees
+    // -- all integer values
+    // output: type of triangle (right, acute, obtuse, invalid - string)
+    // right triangle: exactly 1 angle === 90
+    // obtuse: one angle > 90
+    // acute: all angles < 90
+    
+    // valid triangle: validTriangle function
+    // all angles > 0  array.every(function (angle) { angle > 0});
+    // angle1 + angle2 + angle3 === 190 array.reduce(function (acc, angle) {acc += angle})
+    // if triangle is valid --> triangleType
+    // right array.indexOf(90) !== -1
+    // obtuse array.filter(function (angle) { return angle > 90}).length === 1
+    // acute array.every(function (angle) {return angle < 90})
+    
+    function triangle(angle1, angle2, angle3) {
+      var angleArray = [angle1, angle2, angle3];
+      
+      return isValidTriangle(angleArray) ? triangleType(angleArray)  : 'invalid';
+    }
+    
+    function isValidTriangle(angleArray) {
+      var allNonZero = angleArray.every(function (angle) { 
+            return angle > 0
+      });
+      
+      var totalAngle = angleArray.reduce(function (acc, angle) { 
+        return acc += angle 
+      });
+      
+      return totalAngle === 180 && allNonZero;
+    }
+    
+    function isRightTriangle(angle) {
+      return angle === 90;
+    }
+    
+    function isAcuteTriangle(angle) {
+      return angle < 90;
+    }
+    
+    function triangleType(angleArray) {
+      if (angleArray.some(isRightTriangle)) {
+        return 'right';
+      } else if (angleArray.every(isAcuteTriangle)) {
+        return 'acute';
+      } else {
+        return 'obtuse';
+      }
+    }
+    
+    console.log(triangle(60, 70, 50));       // "acute"
+    console.log(triangle(30, 90, 60));       // "right"
+    console.log(triangle(120, 50, 10));      // "obtuse"
+    console.log(triangle(0, 90, 90));        // "invalid"
+    console.log(triangle(50, 50, 50));       // "invalid"
+    
+    
+  </script>
+</body>
+

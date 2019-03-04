@@ -1,0 +1,64 @@
+<body>
+  <script>
+    // input: odd integer < 0
+    // output: diamond shape in an n x n grid
+    // -- height === width
+    // -- you always start with one diamond (single point)
+    // -- '*'.repeat(x)  x = number of diamonds on each row
+    // top: stars increase by two on each row
+    // top; empty space decreases by two on each row
+    // midpoint: all stars
+    // bottom stars decrease by two on each row
+    // bottom: empty space increases by two 
+    
+    // diamond(5)   stars = 1, 3, 5, 3, 1  -- empty space (on left) 2, 1, 0, 1, 2
+    // loop from 1, increment by 2, up to n, change 2 --> -2
+    
+    function starArray(n) {
+      var result = [];
+      var i = 1;
+      var increment = 2;
+      
+      while (result.length < n) {
+        result.push(i);
+        i += increment
+        if (i === n ) {
+          increment = -2
+        }
+      }
+      return result
+    }
+    
+    
+    function spaceArray(n) {
+      var result = [];
+      var i = Math.floor(n / 2);
+      var increment = 1;
+      
+      while (result.length < n) {
+        result.push(i);
+        i -= increment;
+        if (i === 0) {
+          increment = -1;
+        }
+      }
+      return result;
+    }
+    
+    function diamond(n) {
+      var stars = starArray(n);
+      var spaces = spaceArray(n);
+      var i;
+      
+      for (i = 0; i < n; i += 1) {
+        console.log(' '.repeat(spaces[i]) + '*'.repeat(stars[i]));
+      }
+    }
+    
+    diamond(5);
+    diamond(1);
+    diamond(9);
+
+  </script>
+</body>
+

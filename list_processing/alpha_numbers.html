@@ -1,0 +1,27 @@
+<body>
+  <script>
+    var NUMBERS = [ 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
+  'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen',
+    'seventeen', 'eighteen', 'nineteen'];
+    
+    function alphabeticNumberSort(array) {
+      return array.map( function(num) {
+        return NUMBERS[num];
+      }).sort( function(word1, word2) {
+        if (word1 > word2) {
+          return 1;
+        } else if (word1 < word2) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+    
+    var numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+
+    console.log(alphabeticNumberSort(numArray));
+    
+    // LS included the num --> word conversion in the sort function -- which saved them an iteration. 
+  </script>
+</body>

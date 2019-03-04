@@ -1,0 +1,21 @@
+<!-- 2 digits = 7th fibonacci number-->
+
+<body>
+  <script>
+    function findFibonacciIndexByLength(digits) {
+      var currFib = 1;
+      var prevFib = 1;
+      var nextFib;
+      var i;
+      
+      for (i = 2; String(currFib).length < digits; i += 1) {
+        nextFib = prevFib + currFib;
+        prevFib = currFib;
+        currFib = nextFib;
+      }
+      return i;
+    }
+    console.log(findFibonacciIndexByLength(16));
+  </script>
+</body>
+

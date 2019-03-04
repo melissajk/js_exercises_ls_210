@@ -1,0 +1,20 @@
+<body>
+  <script>
+    var age = Number(prompt('What is your age?'));
+    var retireAge = Number(prompt('At what age would you like to retire?'));
+    
+    var date = new Date();
+    var year = date.getFullYear();
+    var yearsToRetire = retireAge - age;
+    var retireYear = year + yearsToRetire;
+    
+    console.log('It\'s ' + String(year) + '. You will retire in ' + String(retireYear) + '.');
+    console.log('You have only ' + String(yearsToRetire) + ' years of work to go!');
+  </script>
+</body>
+
+
+
+
+
+

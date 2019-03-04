@@ -1,0 +1,23 @@
+<body>
+  <script>
+    function wordLengths(text) {
+      var result = [];
+
+      if (!text) {
+        return result;
+      }
+      text.split(' ').forEach(function (word) {
+        result.push(word + ' ' + String(word.length));
+      });
+      return result;
+    }
+    
+    console.log(wordLengths('cow sheep chicken'));
+    console.log(wordLengths('baseball hot dogs and apple pie'));
+    console.log(wordLengths("It ain't easy, is it?"));
+    console.log(wordLengths('Supercalifragilisticexpialidocious'));
+    console.log(wordLengths(''));
+    console.log(wordLengths());
+  </script>
+</body>
+

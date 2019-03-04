@@ -1,0 +1,27 @@
+<body>
+  <script>
+    function staggeredCase(text) {
+      var upcase = true;
+      var newChar;
+
+      return text.split('').map(function (char) {
+        if (/[a-z]/gi.test(char)) {
+          if (upcase) {
+            newChar = char.toUpperCase();
+          } else {
+            newChar = char.toLowerCase();
+          }
+          upcase = !upcase;
+          return newChar;
+        } else {
+          return char;
+        }
+      }).join('');
+    }
+    
+      console.log(staggeredCase('I Love Launch School!'));
+      console.log(staggeredCase('ALL CAPS'));
+      console.log(staggeredCase('ignore 77 the 444 numbers'));
+  </script>
+</body>
+

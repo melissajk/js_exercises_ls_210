@@ -1,0 +1,13 @@
+<body>
+  <script>
+    function substringAtStart(string) {
+      return string.split('').map(function (char, index) {
+        return string.substring(0, index + 1);
+      });
+    }
+    
+    console.log(substringAtStart('abc'));
+    console.log(substringAtStart('a'));
+    console.log(substringAtStart('xyzzy'));
+  </script>
+</body>

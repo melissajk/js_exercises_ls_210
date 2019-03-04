@@ -1,0 +1,18 @@
+<body>
+  <script>
+    function cleanUp(text) {
+      var newText = '';
+      var i;
+      
+      for (i = 0; i < text.length; i += 1) {
+        if (text[i].match(/[a-zA-Z]/)) {
+          newText += text[i];
+        } else if (newText[newText.length - 1] !== ' ') {
+          newText += ' ';
+        }
+      }
+      return newText;
+    }
+    console.log(cleanUp("---what's my +*& line?"));
+  </script>
+</body>

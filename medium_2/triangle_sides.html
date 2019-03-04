@@ -1,0 +1,68 @@
+<body>
+  <script>
+    // input: three values representing sides of triangle
+    //  -- can be integers or floats
+    // -- there has to be three
+    // -- none of the values can be 0
+    // output:  type of triangle or invalid (string) 
+    // valid triangle:
+    // -- shorterSide1.length + shorterSide2.length  > longerSide.length
+    // -- sides.length > 0
+    // equilateral:  side1 === side2 === side3
+    // isoceles: side1 === side2  !== side3 
+    // scalene: side1 !== side2 !== side3
+    
+    
+    // create array w/ 3 sides [ side1, side2, side3 ]
+    // sort array smallest to largest
+    // if array[0] === 0 --> invalid
+    // if sorted array[0] + sortedarray[1] < sortedarray[2] --> return invalid
+    // firstValue = array[0] --> array.every(function (side) {side === firstValue})
+    // -- return equilateral
+    // sortedArray[0] === sortedarray[1] || sortedarray[1] === sortedarray[2] 
+    // -- return isoceles
+    // -- return scalene
+    
+    function isValidTriangle(sortedArray) {
+      return sortedArray[0] !== 0 && (sortedArray[0] + sortedArray[1]) > sortedArray[2];
+    }
+    
+    function triangle(side1, side2, side3) {
+      sortedArray = [side1, side2, side3].sort(function (a, b) {
+        return a - b;
+      });
+      
+      return isValidTriangle(sortedArray) ?  triangleType(sortedArray) : 'invalid';
+    }
+    
+    function triangleType(sortedArray) {
+      if (isEquilateral(sortedArray)) {
+        return 'equilateral'
+      } else if (isIsoceles(sortedArray)) {
+        return 'isoceles';
+      } else {
+        return 'scalene';
+      }
+    }
+    
+    function isEquilateral(sides) {
+      var firstSide = sides[0];
+      return sides.every(function (side) {
+        return side === firstSide;
+      });
+    }
+    
+    function isIsoceles(sides) {
+      return ((sides[0] === sides[1]) && (sides[1] !== sides[2])) ||
+      ((sides[1] === sides[2]) && (sides[2] !== sides[0]));
+    }
+    
+    console.log(triangle(3, 3, 3));        // "equilateral"
+    console.log(triangle(3, 3, 1.5));      // "isosceles"
+    console.log(triangle(3, 4, 5));        // "scalene"
+    console.log(triangle(0, 3, 3));        // "invalid"
+    console.log(triangle(3, 1, 1));        // "invalid"
+    console.log(triangle(3, 4, 5));        // "scalene"
+  </script>
+</body>
+

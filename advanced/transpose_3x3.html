@@ -1,0 +1,43 @@
+<body>
+  <script>
+    // input: matrix (3 arrays inside of an array)
+    // output: new transposed matrix
+    // 
+    // result array
+    // step through range 0..matrix.length - 1
+    // -- get the value at index i of all three arrays
+    // -- push the array into the result array
+    // return the result
+    
+    
+    function getRow(matrix, idx) {
+      var result = [];
+      var i;
+      
+      for (i = 0; i < matrix.length; i += 1) {
+        result.push(matrix[i][idx]);
+      }
+      return result;
+    }
+    
+    function transpose(matrix) {
+      return matrix.map(function (_, idx) {
+        return getRow(matrix, idx);
+      });
+    }
+    
+    var matrix = [
+      [1, 5, 8],
+      [4, 7, 2],
+      [3, 9, 6]
+    ];
+
+    var newMatrix = transpose(matrix);
+
+    console.log(newMatrix);      // [[1, 4, 3], [5, 7, 9], [8, 2, 6]]
+    console.log(matrix);         // [[1, 5, 8], [4, 7, 2], [3, 9, 6]]
+  </script>
+</body>
+
+
+

@@ -1,0 +1,14 @@
+<body>
+  <script>
+    function isLeapYear(year) {
+      var JULIAN_TO_GREGORIAN = 1752;
+      
+      if (year < JULIAN_TO_GREGORIAN) {
+        return year % 4 === 0;
+      }
+      return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
+    }
+    console.log(isLeapYear(1700));
+  </script>
+</body>
+

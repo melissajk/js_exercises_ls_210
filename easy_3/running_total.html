@@ -1,0 +1,31 @@
+<body>
+  <script>
+    function runningTotal(numbers) {
+      var resultArray = [];
+      var i;
+      var sum= 0;
+      
+      for (i = 0; i < numbers.length; i += 1) {
+        resultArray.push(sum += numbers[i]);
+      }
+      
+      return resultArray;
+    }
+    // using the Array.prototype.map method
+  
+    function runningTotal1(numbers) {
+      var sum = 0;
+      
+      return numbers.map(function(num) {
+        return sum += num;
+      });
+    }
+    console.log(runningTotal1([14, 11, 7, 15, 20]));
+  </script>
+</body>
+
+
+
+
+
+

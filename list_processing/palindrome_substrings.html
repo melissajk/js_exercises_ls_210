@@ -1,0 +1,34 @@
+<body>
+  <script>
+    function substrings(string) {
+      return string.split('').map(function (char, index) {
+        return substringAtStart(string.substring(index));
+      }).reduce(function (result, array) {
+        return result.concat(array);
+      })
+    }
+
+    function substringAtStart(string) {
+      return string.split('').map(function (char, index) {
+        return string.substring(0, index + 1);
+      });
+    }
+    
+    function palindromes(string) {
+      return substrings(string).filter(isPalindrome);
+    }
+    
+    function isPalindrome(string) {
+      return string.length > 1 && string === reverseString(string);
+    }
+    
+    function reverseString(string) {
+      return string.split('').reverse().join('');
+    }
+    
+    console.log(palindromes('abcd'));
+    console.log(palindromes('madam'));
+    console.log(palindromes('hello-madam-did-madam-goodbye'));
+    console.log(palindromes('knitting cassettes'));
+  </script>
+</body>

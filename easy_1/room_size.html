@@ -1,0 +1,40 @@
+<!--<body>
+  <script>
+    var SQMETERS_TO_SQFEET = 10.7639;
+    var roomLength = Number(prompt('Enter the length of the room in meters:'));
+    var roomWidth = Number(prompt('Enter the width of the room in meters:'));
+
+    var areaInMeters = roomLength * roomWidth;
+    var areaInFeet = areaInMeters * SQMETERS_TO_SQFEET;
+
+    console.log('The area of the room is ' + areaInMeters.toFixed(2) +
+        ' square meters (' + areaInFeet.toFixed(2) + ' square feet).');
+  </script>
+<body>-->
+
+<!-- Further Exploration -->
+
+<body>
+  <script>
+    var SQMETERS_TO_SQFEET = 10.7639;
+    var roomLength = Number(prompt('Enter the length of the room:'));
+    var roomWidth = Number(prompt('Enter the width of the room:'));
+    var type = prompt('Is this in meters(m) or feet(f)?');
+    var areaInMeters;
+    var areaInFeet;
+    
+    if (type === 'm' || type === 'meters') {
+      areaInMeters = roomLength * roomWidth;
+      areaInFeet = areaInMeters * SQMETERS_TO_SQFEET
+    }
+    
+    if (type === 'f' || type === 'feet') {
+      areaInFeet = roomLength * roomWidth;
+      areaInMeters = areaInFeet / SQMETERS_TO_SQFEET;
+    }
+
+    console.log('The area of the room is ' + areaInMeters.toFixed(2) +
+        ' square meters (' + areaInFeet.toFixed(2) + ' square feet).');
+    console.log(`The area of the room is ${areaInMeters.toFixed(2)} square meters (${areaInFeet.toFixed(2)} square feet).`);
+  </script>
+<body>

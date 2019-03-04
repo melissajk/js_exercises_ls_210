@@ -1,0 +1,13 @@
+<body>
+  <script>
+    function repeater(text) {
+      var doubled = '';
+      
+      text.split('').forEach(function(char) {
+        doubled += char + char;
+      });
+      return doubled;
+    }
+    console.log(repeater('Hello'));
+  </script>
+</body>
